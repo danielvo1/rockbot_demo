@@ -1,10 +1,9 @@
 var app = new Vue({
     el: "#app",
-    data: {
-        message: "Connection",
-    }
+    data: function () {
+        return {
+            artist : 0
+        };
+    },
 })
-
-fetch('https://s.rockbot.com/temp/now_playing.json')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    ;
