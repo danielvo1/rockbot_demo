@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,31 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
 </head>
+
 <body>
     <div id="app">
-        <h1> Testing for {{artist}}</h1>
+        <header>
+            <p> Mini Rockbot </p>
+        </header>
+        <div>
+            <img :src="artwork">
+            <h1> {{song}}</h1>
+            <p> {{artist}} </p>
+        </div>
+        <div id="queue">
+            <h3> Coming Up! </h3>
+            <ul> 
+                <li v-for="song in queue" :key="queue.sSong">
+                    <p>  <img :src="song.sArtwork"> {{song.sArtist}} </p>
+                    <p> {{song.sSong}} </p>
+                    <p> {{song.iLikes - song.iDislikes}} </p>
+                </li>
+            </ul>
+        </div>
+
     </div>
-    
+
     <script src="main.js"></script>
 </body>
+
 </html>

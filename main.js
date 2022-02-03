@@ -3,20 +3,19 @@ var app = new Vue({
     data: {
         artist: '',
         song: '',
+        artwork: '',
+        queue: [],
     }
 })
+console.log(app.artist)
 
-const vm = app.$mount('#app')
-console.log(vm.artist)
-
-vm.artist = "Wow Bowie"
+app.artist = "Wow Bowie"
 
 fetch("https://s.rockbot.com/temp/now_playing.json")
     .then(response => response.json())
     .then(data => {
-        vm.artist = data.aNowPlaying.sArtist
-        vm.song = data.aNowPlaying.sSong
+        app.artist = data.aNowPlaying.sArtist
+        app.song = data.aNowPlaying.sSong
+        app.artwork = data.aNowPlaying.sArtwork
+        app.queue = data.aQueue
     })
-
-console.log(vm.artist)
-    
