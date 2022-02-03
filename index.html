@@ -15,6 +15,7 @@
         <header>
             <p> Mini Rockbot </p>
         </header>
+
         <div v-show="page === 'nowplaying'">
             <div>
                 <img :src="artwork">
@@ -34,12 +35,29 @@
                 </ul>
             </div>
         </div>
-
+        <div v-show="page === 'leaderboard'">
+            <div id="topArtists">
+                <h3> Top Artists </h3>
+                <ul>
+                    <li v-for="artist in topArtists" :key="topArtists.sArtist">
+                        <p> <img :src="artist.sArtistImage">  {{artist.sArtist}} </p>
+                    </li>
+                </ul>
+            </div>
+            <div id="topDjs">
+                <h3> Top Djs </h3>
+                <ul>
+                    <li v-for="dj in topDJs" :key="topDJs.sArtist">
+                        <p> <img :src="dj.sArtistImage">  {{dj.sArtist}} </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <footer>
-            <button v-on:click="page = 'nowplaying' ">
+            <button v-on:click="page = 'nowplaying'">
                 Normal
             </button>
-            <button v-on:click="page = 'leaderboard'"> 
+            <button v-on:click="page = 'leaderboard'">
                 Hidden
             </button>
         </footer>

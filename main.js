@@ -5,7 +5,9 @@ var app = new Vue({
         song: '',
         artwork: '',
         queue: [],
-        page: 'nowplaying', 
+        topArtists: [],
+        topDJs: [],
+        page: 'nowplaying',
     }
 })
 
@@ -19,4 +21,6 @@ fetch("https://s.rockbot.com/temp/now_playing.json")
         app.song = data.aNowPlaying.sSong
         app.artwork = data.aNowPlaying.sArtwork
         app.queue = data.aQueue
+        app.topArtists = data.aTopArtists
+        app.topDJs = data.aTopDJs
     })
