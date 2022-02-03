@@ -15,21 +15,34 @@
         <header>
             <p> Mini Rockbot </p>
         </header>
-        <div>
-            <img :src="artwork">
-            <h1> {{song}}</h1>
-            <p> {{artist}} </p>
+        <div v-show="page === 'nowplaying'">
+            <div>
+                <img :src="artwork">
+                <h1> {{song}}</h1>
+                <p> {{artist}} </p>
+            </div>
+            <div id="queue">
+                <h3> Coming Up! </h3>
+                <ul>
+                    <!-- loops through array of queued music and creates a unique li element for each item 
+                in the array -->
+                    <li v-for="song in queue" :key="queue.sSong">
+                        <p> <img :src="song.sArtwork"> {{song.sArtist}} </p>
+                        <p> {{song.sSong}} </p>
+                        <p> {{song.iLikes - song.iDislikes}} </p>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="queue">
-            <h3> Coming Up! </h3>
-            <ul> 
-                <li v-for="song in queue" :key="queue.sSong">
-                    <p>  <img :src="song.sArtwork"> {{song.sArtist}} </p>
-                    <p> {{song.sSong}} </p>
-                    <p> {{song.iLikes - song.iDislikes}} </p>
-                </li>
-            </ul>
-        </div>
+
+        <footer>
+            <button v-on:click="page = 'nowplaying' ">
+                Normal
+            </button>
+            <button v-on:click="page = 'leaderboard'"> 
+                Hidden
+            </button>
+        </footer>
 
     </div>
 

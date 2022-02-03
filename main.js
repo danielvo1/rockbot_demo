@@ -5,10 +5,11 @@ var app = new Vue({
         song: '',
         artwork: '',
         queue: [],
+        page: 'nowplaying', 
     }
 })
-console.log(app.artist)
 
+//testing that the artist name is being changed from the api call 
 app.artist = "Wow Bowie"
 
 fetch("https://s.rockbot.com/temp/now_playing.json")
