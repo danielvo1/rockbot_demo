@@ -16,34 +16,39 @@
 <body>
     <div id="app">
         <header>
-            <p> Mini Rockbot </p>
+            <img id="logo" src="https://d2x3f3hu3pbot6.cloudfront.net/static/img/logo/square_bk_text-40px.png">
         </header>
 
         <div v-show="page === 'nowplaying'">
-            <div>
-                <img :src="artwork">
-                <h1> {{song}}</h1>
-                <p> {{artist}} </p>
+            <div id="current">
+                <img :src="artwork" id="current_song">
+                <div id="cur_info">
+                    <p> Currently Playing:<p>
+                    <p id="cur_song">  {{song}} </p>
+                    <p id="cur_artist"> {{artist}} </p>
+                </div>
             </div>
             <div id="queue">
-                <h3> Coming Up! </h3>
+                <h2> Coming Up! </h2>
                 <ul>
-                    <!-- loops through array of queued music and creates a unique li element for each item 
-                in the array -->
-                    <li v-for="song in queue" :key="queue.sSong">
-                        <p> <img :src="song.sArtwork"> {{song.sArtist}} </p>
-                        <p> {{song.sSong}} </p>
-                        <p> {{song.iLikes - song.iDislikes}} </p>
+                    <li v-for="song in queue" :key="queue.sSong" class="queue_songs">
+                        <img :src="song.sArtwork" class="queue_img">
+                        <div class="queue_info">
+                        <p class="queue_artist"> {{song.sArtist}}</p>
+                        <p class="queue_song"> {{song.sSong}} </p>
+                        <p class="queue_rating"> Rating: {{song.iLikes - song.iDislikes}} </p>
+                    </div>
                     </li>
                 </ul>
             </div>
         </div>
         <div v-show="page === 'leaderboard'">
             <div id="topArtists">
-                <h3> Top Artists </h3>
+                <h2> Top Artists </h2>
                 <ul>
                     <li v-for="artist in topArtists" :key="topArtists.sArtist">
-                        <p> <img :src="artist.sArtistImage">  {{artist.sArtist}} </p>
+                        <img :src="artist.sArtistImage">
+                        <p> {{artist.sArtist}} </p>
                     </li>
                 </ul>
             </div>
@@ -51,16 +56,17 @@
                 <h3> Top Djs </h3>
                 <ul>
                     <li v-for="dj in topDJs" :key="topDJs.sArtist">
-                        <p> <img :src="dj.sArtistImage">  {{dj.sArtist}} </p>
+                        <img :src="dj.sArtistImage">
+                        <p> {{dj.sArtist}} </p>
                     </li>
                 </ul>
             </div>
         </div>
-        <footer>
-            <button v-on:click="page = 'nowplaying'">
+        <footer id="footer">
+            <button v-on:click="page = 'nowplaying'" id="button1">
                 Normal
             </button>
-            <button v-on:click="page = 'leaderboard'">
+            <button v-on:click="page = 'leaderboard'" id="button2">
                 Hidden
             </button>
         </footer>
